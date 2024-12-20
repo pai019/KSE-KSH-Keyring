@@ -1,0 +1,139 @@
+@font-face {
+  font-family: "Dallawang";
+  src: url("font/달라왕\ Bold.woff") format("woff");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Dallawang";
+  src: url("font/달라왕\ Regular.woff") format("woff");
+  font-weight: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  font-family: "Dallawang", Arial, sans-serif; /*폰트 로드 안 될 경우 기본 폰트*/
+  height: 100%;
+  width: 100%; /* Arrange sections vertically */
+}
+
+p {
+  font-size: 30rem;
+  font-weight: bold;
+}
+
+.split {
+  width: 100%; /* Full width for both sections */
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  position: relative; /* Ensure stacking context for z-index */
+}
+
+.split.top {
+  height: 65%; /* Occupies 70% of the screen height */
+  background-color: #ffd067; /* Blue background */
+  color: white;
+}
+
+.split.bottom {
+  height: 35%; /* Occupies 30% of the screen height */
+  background-color: #fcecd2; /* Green background */
+  color: white;
+}
+
+.mainBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute; /* Allow overlap */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Place it above the split sections */
+}
+
+#mainImage {
+  margin-top: 2vh;
+  width: 60vw;
+  object-fit: contain;
+  z-index: 2; /* Ensure it's above splits but below button */
+  position: relative;
+}
+
+#button {
+  position: absolute; /* Allow precise placement */
+  z-index: 3; /* Ensure it's above the mainImage */
+  top: 45%; /* Position at the center of the viewport */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center it exactly */
+  width: 13vw; /* Set a width for the button */
+  cursor: pointer; /* Make it interactive */
+}
+
+
+/*모바일 부분*/
+
+#bgPhone{
+  display: none;
+  width: 100%;
+  position: absolute;
+}
+
+#startBtn{
+  display: none;
+  width: 30%;
+  margin-top: 0px ;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  transform: translate(120%);
+  z-index: 10;
+  margin-top: -300px;
+}
+
+
+/*모바일 반응형*/
+
+@media (max-width:768px){
+
+  .topBar {
+    background-color: #8aa351;
+    height: 6vh;
+  }
+
+  .topBarText{
+      font-weight: normal;
+      margin-left: 1vw;
+      font-size: 1.4rem;
+  }
+
+  #button{
+    display: none;
+  }
+
+  #startBtn{
+    display: block;;
+  }
+
+  #mainImage{
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    display: none;
+  }
+
+  #bgPhone{
+    display: block;
+
+  }
+
+  
+}

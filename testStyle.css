@@ -1,0 +1,503 @@
+
+@font-face {
+  font-family: 'Dallawang';
+  src: url('font/달라왕\ Regular.woff') format('woff');
+  font-weight: normal;
+}
+
+@font-face {
+font-family: 'Dallawang';
+src: url('font/달라왕\ light.woff2') format('woff2');
+font-weight: light;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  font-family: 'Dallawang', Arial, sans-serif; /*폰트 로드 안 될 경우 기본 폰트*/
+  overflow: hidden;
+}
+
+.topBar {
+  background-color: #8aa351;
+  height: 8vh;
+  width: 100vw;    
+  display: flex;
+  border-bottom: solid black 5px;
+  flex-direction: row;
+  justify-content: space-between; /* 두 요소를 좌우 끝으로 배치 */
+  align-items: center; /* 요소들이 수직 중앙에 위치하도록 */
+  z-index: 10;
+  position: fixed;
+}
+
+/*
+.topBarButton {
+  margin-left: 1vw;
+  display: flex;
+  justify-content: left;
+  align-items: center; 
+}
+  
+#topBarButtonImg{
+  width: 50px; 
+  height: auto; 
+  margin-right: 5px;
+}*/
+
+
+.topBarText{
+  font-weight: bold;
+  margin-left: 1vw;
+  font-size: 1.6rem;
+  color: white;
+}
+
+
+.slider-container {
+  display: flex;
+}
+.slide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFF5DF; /* 배경 이미지 설정 */
+  background-repeat: no-repeat;
+  background-size: auto; /* 배경 이미지 크기를 슬라이드 영역에 맞게 채움 */
+  background-position: center; /* 이미지를 화면 중앙에 위치 */
+  background-origin: content-box; /* 이미지 위치 계산 기준을 조정 */
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Dallawang', Arial, sans-serif;
+  font-weight: normal; /* 폰트 두께 */
+  margin-top: 30vh;
+  font-size: 5rem;
+  z-index: 10;
+   /* 텍스트가 배경 이미지 위에 오도록 설정 */
+}
+
+.buttons {
+  margin-top: 57vh;
+  display: flex;
+  position: fixed;
+  gap: 10vw; /* 버튼 간격 */
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+/* 버튼 스타일 */
+button {
+  width: 40px; /* 버튼의 크기 (너비) */
+  height: 40px; /* 버튼의 크기 (높이) */
+  border: 3px solid #000000; /* 테두리 색상 */
+  border-radius: 50%; /* 원 모양 */
+  background-color: transparent; /* 비어 있는 효과 */
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease; /* 호버 시 부드럽게 색상 변경 */
+  font-size: 1.6rem;
+  font-family: 'Dallawang', Arial, sans-serif;
+  font-weight: normal; /* 폰트 두께 */
+}
+
+/* 버튼 호버 효과 */
+button:hover {
+  background-color: #8aa351; /* 원 내부를 채우는 색상 */
+  color: white; /* 텍스트 색상 변경 */
+}
+
+/* 버튼 텍스트 스타일 */
+button::after {
+  content: attr(data-text); /* data-text 속성의 값을 버튼 아래 표시 */
+  position: absolute;
+  top: 100%; /* 버튼 바로 아래에 텍스트 배치 */
+  left: 50%;
+  transform: translateX(-50%);
+  color: #333;
+  white-space: nowrap;
+  margin-top: 10px; /* 버튼과 텍스트 간격 */
+  text-align: center;
+}
+
+.nav {
+  margin-top: 80vh;
+  position: fixed;
+  z-index: 100;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #FFF5DF; /* 배경색 설정 */
+  overflow: hidden;
+  z-index: 100;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #8aa351; /* 로딩 스피너 색상 */
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+  
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #333;
+  font-family: 'Dallawang', Arial, sans-serif;
+}
+
+/* 로딩 애니메이션 */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#bigResult{
+width: 100vw;
+height: 100vh;
+background-color: #FFF5DF; 
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+}
+
+#result {
+display: flex;
+/* 이미지와 선을 중앙에 배치 */
+align-items: center; /* 수직 중앙 정렬 */
+flex-direction: column;
+position: relative;
+margin-left: 20vw;
+background-color: #FFF5DF; /* 배경 색상 */
+}
+
+#result::after {
+content: '';
+position: absolute;
+top: 0;
+bottom: 480px;
+left: 50%; /* 세로선이 가운데에 오도록 */
+width: 2px; /* 세로선 두께 */
+background-color: #000; /* 세로선 색상 */
+transform: translateX(-50%); /* 가운데 정렬 */
+z-index: 1; 
+}
+
+#resultBox{
+margin-top: 13vh;
+margin-left: 15vw;
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+#txt-big{
+position: absolute; /* 부모(#resultBox)를 기준으로 위치 설정 */
+top: 25%; /* resultBox의 세로 중간에 배치 */
+left: 50%; /* resultBox의 가로 중간에 배치 */
+transform: translate(-50%, -50%); /* 중앙 정렬 */
+display: flex; /* 버튼 이미지들을 가로로 나란히 배치 */
+font-size: 2.4rem;
+text-align: center;
+letter-spacing: 1px;
+font-family: 'Dallawang', Arial, sans-serif;
+font-weight: normal; /* 폰트 두께 */
+}
+
+#txt{
+position: absolute; /* 부모(#resultBox)를 기준으로 위치 설정 */
+margin-top: 35%; /* resultBox의 세로 중간에 배치 */
+left: 12%; /* resultBox의 가로 중간에 배치 */
+right: 12%;
+/*transform: translate(-50%, -50%); /* 중앙 정렬 */
+display: flex; /* 버튼 이미지들을 가로로 나란히 배치 */
+flex-direction: column;
+font-size: 1.3rem;
+text-align: center;
+font-family: 'Dallawang', Arial, sans-serif;
+font-weight: light; /* 폰트 두께 */
+}
+
+
+#btn{
+position: absolute; /* 부모(#resultBox)를 기준으로 위치 설정 */
+top: 75%; /* resultBox의 세로 중간에 배치 */
+left: 50%; /* resultBox의 가로 중간에 배치 */
+transform: translate(-50%, -50%); /* 중앙 정렬 */
+display: flex; /* 버튼 이미지들을 가로로 나란히 배치 */
+gap: 30px; /* 버튼 사이 간격 조정 */
+z-index: 2;
+}
+
+.scrollable-text {
+  width: 98%;
+  height: 400px;
+  position: absolute;
+  top: 100px; /* 적절한 위치로 조정 */
+  overflow-y: scroll; /* 세로 스크롤 가능 */
+  z-index: 1;
+
+}
+
+
+
+#txt .image-Box {
+  text-align: center; /* 이미지 가운데 정렬 */
+  margin-top: 20px; /* 이미지와 텍스트 간의 간격 설정 */
+}
+
+#txt .image-Box img {
+  width: 100%; /* 이미지를 원하는 크기로 조정 */
+  max-width: 650px; /* 최대 크기 설정 */
+  height: auto; /* 비율에 맞게 자동 크기 조정 */
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+  25% {
+    transform: rotate(-7deg) translate(-2px, 2px);
+  }
+  50% {
+    transform: rotate(7deg) translate(2px, -2px);
+  }
+  75% {
+    transform: rotate(-5deg) translate(-1px, 1px);
+  }
+  100% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+}
+
+
+/* 이미지 컨테이너 스타일 = 키링 결과창 */
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15vh; /* 상단 여백 */
+  justify-content: center;
+  z-index: 10; /* 이미지들이 세로선보다 위로 오도록 설정 */
+}
+
+.image-container img {
+  height: auto;
+  animation: swing 2s ease-in-out infinite;
+  transform-origin: top center;
+  display: inline-block;
+}
+
+.characterBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+
+@media (max-width:768px){
+  
+  .slider-container {
+    display: flex;
+
+  }
+  .slide {
+    overflow: hidden;
+    background-image: none !important;
+    flex-shrink: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  h2 {
+    font-family: 'Dallawang', Arial, sans-serif;
+    font-weight: normal; /* 폰트 두께 */
+    margin-top: 20vh;
+    font-size: 2.6rem;
+    z-index: 10;
+    padding-left: 3vw;
+    padding-right: 3vw;
+  }
+  
+  .buttons {
+    margin-top: 40vh;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    gap: 8vh; /* 버튼 간격 */
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+  
+  /* 버튼 스타일 */
+  button {
+    width: 30px; /* 버튼의 크기 (너비) */
+    height: 30px; /* 버튼의 크기 (높이) */
+    border: 3px solid #000000; /* 테두리 색상 */
+    border-radius: 50%; /* 원 모양 */
+    background-color: transparent; /* 비어 있는 효과 */
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease; /* 호버 시 부드럽게 색상 변경 */
+    font-size: 1.3rem;
+    font-family: 'Dallawang', Arial, sans-serif;
+    font-weight: normal; /* 폰트 두께 */
+  }
+  
+  /* 버튼 호버 효과 */
+  button:hover {
+    background-color: #8aa351; /* 원 내부를 채우는 색상 */
+    color: white; /* 텍스트 색상 변경 */
+  }
+  
+  /* 버튼 텍스트 스타일 */
+  button::after {
+    content: attr(data-text); /* data-text 속성의 값을 버튼 아래 표시 */
+    position: absolute;
+    top: 100%; /* 버튼 바로 아래에 텍스트 배치 */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #333;
+    white-space: nowrap;
+    margin-top: 10px; /* 버튼과 텍스트 간격 */
+    text-align: center;
+  }
+  
+  .nav {
+    display: none; /* 기본적으로 숨김 */
+  }
+
+
+  
+    
+  #bigResult {
+    flex-direction: column; /* 세로 배치 */
+    overflow-y: auto; /* 세로 스크롤 활성화 */
+  }
+
+  #result{
+    position: relative; /* 부모(#bigResult) 기준으로 위치 설정 */
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    margin: 0; /* 추가 여백 제거 */
+    height: auto; /* 높이 자동 조정 */
+    max-width: 100%; /* 화면 너비를 넘지 않도록 제한 */
+  }
+  
+
+  #resultBox {
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    justify-content: center; /* 중앙 정렬 */
+    align-items: center; /* 중앙 정렬 */
+    position: relative; /* 부모의 상대적인 위치 설정 */
+    margin-left: 0; /* 모바일 화면에 맞게 여백을 조정 */
+    width: 100%; /* 모바일 화면 크기에 맞게 크기 설정 */
+  }
+
+  #box{
+    display: none;
+  }
+
+
+
+  #txt-big {
+    width: 80vw;
+    top: 0;
+    margin-top: 5vh;
+    left: 50%;
+    transform: translate(-50%, -30%); 
+    font-size: 2.4rem;
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: 'Dallawang', Arial, sans-serif;
+    font-weight: normal;
+
+  }
+
+  #txt {
+    width: 88vw;
+    font-size: 1.3rem;
+    text-align: center;
+    font-family: 'Dallawang', Arial, sans-serif;
+    font-weight: light;
+    z-index: 1;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    margin: 0; /* 기존 margin 제거 */
+    position: absolute; /* 부모에 대한 절대 위치 */
+    top: 50%; /* 화면의 세로 중간 위치 */
+    left: 50%; /* 화면의 가로 중간 위치 */
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
+  }
+
+  /* 버튼을 세로로 정렬 */
+  #btn {
+    margin-top: 20vh; /* margin-top 값을 줄여서 버튼이 화면에 적당히 위치하도록 */
+    display: flex;
+    flex-direction: column; /* 버튼을 세로로 배치 */
+    gap: 10px; /* 버튼 간격 설정 */
+    position: absolute; /* 부모(#resultBox)를 기준으로 절대 위치 설정 */
+    left: 50%;
+    transform: translateX(-50%); /* 정확한 가로 중앙 정렬 */
+    padding-bottom: 5vh;
+  }
+
+  #btn img{
+    width: 90%;
+
+  }
+    
+    .scrollable-text {
+      width: 100vw;
+      height: 900px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-y: hidden;
+      top: 50px; /* 적절한 위치로 조정 */
+    }
+
+    #txt .image-Box {
+      text-align: center; /* 이미지 가운데 정렬 */
+      margin-top: 3vh; /* 이미지와 텍스트 간의 간격 설정 */
+    }
+    
+    #txt .image-Box img {
+      width: 100%; /* 이미지를 원하는 크기로 조정 */
+      max-width: 800px; /* 최대 크기 설정 */
+      height: auto; /* 비율에 맞게 자동 크기 조정 */
+    }
+
+  /* 이미지 컨테이너 스타일 = 키링 결과창 */
+  .image-container {
+    margin-top: 10vh; /* 상단 여백 */
+  }
+    
+
+}

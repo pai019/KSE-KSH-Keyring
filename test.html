@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>나 지금 키링 만드는데?</title>
+    <link rel="icon" href="img/main.ico" type="image/x-icon">
+    <link rel="stylesheet" href="testStyle.css" />
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="testScript.js" defer></script>
+  </head>
+  <body>
+
+    <!--상단바-->
+    <div class="topBar">
+      <p class="topBarText">나 지금 키링 만드는데?</p>
+    </div>
+
+    <!--질문창-->
+
+    <div class="slider-container">
+      <div class="slide" style="background-image: url('img/01-background.png')">
+        <h2><br />Q1. 당신의 과제 양은?</h2>
+        <div class="buttons">
+          <button data-image="img/01-A.png" data-q="q1" data-text="매우 적음" value="0"></button>
+          <button data-image="img/01-A.png" data-q="q1" data-text="적음" value="1"></button>
+          <button data-image="img/01-B.png" data-q="q1" data-text="많음" value="2"></button>
+          <button data-image="img/01-B.png" data-q="q1" data-text="매우 많음" value="3"></button>
+        </div>
+
+        <div class="nav">
+          <img src="img/nav01.png" />
+        </div>
+      </div>
+
+      <div class="slide" style="background-image: url('img/02-background.png')">
+        <h2> Q2. 당신과 편하게<br /> 밥을 먹을 수 있는 사람은?</h2>
+        <div class="buttons">
+          <button data-image="img/02-C.png" data-q="q2" data-text="없음" value="0"></button>
+          <button data-image="img/02-C.png" data-q="q2" data-text="1~2명" value="1"></button>
+          <button data-image="img/02-D.png" data-q="q2" data-text="3~4명" value="2"></button>
+          <button data-image="img/02-D.png" data-q="q2" data-text="내가 부르면 다 나옴" value="3"></button>
+        </div>
+
+        <div class="nav">
+          <img src="img/nav02.png" />
+        </div>
+      </div>
+
+      <div class="slide" style="background-image: url('img/03-background.png')">
+        <h2><br />Q3. 당신의 옷 스타일은?</h2>
+        <div class="buttons">
+          <button data-image="img/03-E.png" data-q="q3" data-text="안꾸" value="0"></button>
+          <button data-image="img/03-E.png" data-q="q3" data-text="꾸안꾸" value="1"></button>
+          <button data-image="img/03-F.png" data-q="q3" data-text="적당히 꾸밈" value="2"></button>
+          <button data-image="img/03-F.png" data-q="q3" data-text="패셔니스타" value="3"></button>
+        </div>
+
+        <div class="nav">
+          <img src="img/nav03.png" />
+        </div>
+      </div>
+
+      <div class="slide" style="background-image: url('img/04-background.png')">
+        <h2><br />Q4. 당신의 시험공부 스타일은?</h2>
+        <div class="buttons">
+          <button data-image="img/04-G.png" data-q="q4" data-text="벼락치기" value="0"></button>
+          <button data-image="img/04-G.png" data-q="q4" data-text="이주 전부터 공부" value="1"></button>
+          <button data-image="img/04-H.png" data-q="q4" data-text="한달 전부터 공부" value="2"></button>
+          <button data-image="img/04-H.png" data-q="q4" data-text="복습공부" value="3"></button>
+        </div>
+
+        <div class="nav">
+          <img src="img/nav04.png" />
+        </div>
+      </div>
+
+      <div class="slide" style="background-image: url('img/05-background.png')">
+        <h2><br />Q5. 당신의 학과는?</h2>
+        <div class="buttons">
+          <button data-q="q5" data-text="이과" value="0"></button>
+          <button data-q="q5" data-text="문과" value="1"></button>
+          <button data-q="q5" data-text="예체능" value="2"></button>
+        </div>
+
+        <div class="nav">
+          <img src="img/nav05.png" />
+        </div>
+      </div>
+
+      <div class="slide" style="background-image: url('img/06-background.png')">
+        <h2>Q6. 당신의 다음학기는 <br />어떻기를 바라나?</h2>
+        <div class="buttons">
+          <button data-image="img/06-I.png" data-q="q6" data-text="성적 몰빵" value="0"></button>
+          <button data-image="img/06-I.png" data-q="q6" data-text="성적이 조금 더" value="1"></button>
+          <button data-image="img/06-J.png" data-q="q6" data-text="낭만이 조금 더" value="2"></button>
+          <button data-image="img/06-J.png" data-q="q6" data-text="낭만 몰빵" value="3"></button>
+        </div>
+
+        <div class="nav">
+          <img src="img/nav06.png" />
+        </div>
+      </div>
+
+      <div class="slide" style="background-image: url('img/07-background.png')">
+        <h2><br />Q7. 당신의 학기 만족도</h2>
+        <div class="buttons">
+          <button data-q="q7" data-text="매우 아쉬움" value="0"></button>
+          <button data-q="q7" data-text="아쉬움" value="1"></button>
+          <button data-q="q7" data-text="만족" value="2"></button>
+          <button data-q="q7" data-text="매우 만족" value="3"></button>
+        </div>
+
+        <div class="nav">
+          <img src="img/nav07.png" />
+        </div>
+      </div>
+
+      <div class="slide" id="loading-slide">
+        <div class="loading-container">
+          <div class="loading-spinner"></div>
+          <p class="loading-text">결과를 불러오는 중…</p>
+        </div>
+      </div>
+
+
+      <!--결과창-->
+
+      <div id="bigResult">
+
+            <!--키링 윗부분-->
+        <div id="result">
+
+        </div>
+
+            <!--오른쪽 박스-->
+        <div id="resultBox">
+          <div class="scrollable-text">
+            
+            <div id="txt-big">
+              <p>
+              </p>
+            </div>
+          
+
+            <div id="txt">
+              <p>
+                당신의 2024년, 가장 반짝였던 순간은 언제였나요? <br>
+                작은 키링 속에 담긴 당신의 이야기가 잊지 못할 추억으로 남아 새로운 시작을 다짐하는 특별한 시간이 되었길 바랍니다.<br>
+                <br>
+                한 해 동안 고생한 당신에게 드리는 키링,<br>
+                내년에도 반짝이는 순간들로 가득 채워지길..
+
+                <div class="image-Box">
+                  <img src="img/scrollImg.png" alt="키링 이미지" />
+                </div>
+            </div>
+
+          </div>
+
+          <div id="btn">
+            <a href="index.html">
+              <img src="img/btnAgain.png" >
+            </a>
+            <img src="img/btnDown.png" id="downloadBtn" style="cursor: pointer;">
+
+          </div>
+
+          <img src="img/resultBox.png" id="box">
+        </div>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
